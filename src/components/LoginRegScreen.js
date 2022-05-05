@@ -13,7 +13,10 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
     let [failedLogin, setFailedLogin] = useState(false)
     let [username, setUsername] = useState(undefined)
     let [password, setPassword] = useState(undefined)
+    let [firstName, setFirstName] = useState(user? user.firstname: '')
+    let [lastName, setLastName] = useState(user? user.lastname: '')
     let [editing, setEditing] = useState(false)
+
     
     function handleSubmit(){
         let usernamesInDB = userDB.map(user => user.username)
@@ -30,6 +33,10 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
         else{
             setFailedLogin(true)
         }
+    }
+
+    async function updateUserProfile(){
+        //update DB with user changes
     }
 
 function handleLogout(){
@@ -68,7 +75,7 @@ function handleLogout(){
                         <Button variant='contained' onClick={()=>{handleSubmit()}}>Login</Button>
                     </form>
                     :
-                    <div style={{'textAlign': 'center','marginTop': '5%', 'padding': '5%'}}>
+                    <div style={{'textAlign': 'center','marginTop': '5%', 'padding': '5%', 'justifyContent': 'center'}}>
                         <Card sx={{ 
                             maxWidth: .90 * (window.innerWidth),
                             display: 'flex',
@@ -82,28 +89,84 @@ function handleLogout(){
                             title={user.firstname + ' ' + user.lastname}
                             subheader={user.username}>
                             </CardHeader>
-                            <CardContent sx={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                maxWidth: '100%',
-                                justifyContent: 'center'
-                            }}>
-                                <Button variant="contained" sx={{
-                                    mt:'1%',
-                                    mx: '2%' 
+                            {!editing?
+                                <CardContent sx={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    maxWidth: '100%',
+                                    justifyContent: 'center'
                                 }}>
-                                    Edit User Information
-                                </Button>
-                                <Button variant="contained" 
-                                sx={{
-                                    mt:'1%',
-                                    mx: '2%' 
-                                }}
-                                onClick={()=>{handleLogout()}}
-                                >
-                                    Logout
-                                </Button>
-                            </CardContent>
+                                    <Button variant="contained" sx={{
+                                        mt:'1%',
+                                        mx: '2%' 
+                                    }} onClick={()=>{setEditing(true)}}>
+                                        Edit User Information
+                                    </Button>
+                                    <Button variant="contained" 
+                                    sx={{
+                                        mt:'1%',
+                                        mx: '2%' 
+                                    }}
+                                    onClick={()=>{handleLogout()}}
+                                    >
+                                        Logout
+                                    </Button>
+                                </CardContent>
+                                :
+                                <CardContent sx={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    maxWidth: '100%',
+                                    justifyContent: 'center'
+                                }}>
+                                    <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="Username"
+                                    sx={{
+                                        bgcolor: 'whitesmoke',
+                                        borderRadius: '10px',
+                                        mt: '1em'
+                                    }}
+                                    onChange={(e)=>{setUsername(e.target.value)}}
+                                    />
+                                    <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="Password"
+                                    sx={{
+                                        bgcolor: 'whitesmoke',
+                                        borderRadius: '10px',
+                                        mt: '1em'
+                                    }}
+                                    onChange={(e)=>{setPassword(e.target.value)}}
+                                    />
+                                    <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="First Name"
+                                    sx={{
+                                        bgcolor: 'whitesmoke',
+                                        borderRadius: '10px',
+                                        mt: '1em'
+                                    }}
+                                    onChange={(e)=>{setFirstName(e.target.value)}}
+                                    />
+                                    <TextField
+                                    required
+                                    id="outlined-required"
+                                    label="Last Name"
+                                    sx={{
+                                        bgcolor: 'whitesmoke',
+                                        borderRadius: '10px',
+                                        mt: '1em',
+                                        mb: '1em'
+                                    }}
+                                    onChange={(e)=>{setLastName(e.target.value)}}
+                                    />
+                                    <Button variant='contained' onClick={()=>{}}>Submit Changes</Button>
+                                </CardContent>
+                            }
                         </Card>
                     </div>
                 }
@@ -142,9 +205,9 @@ function handleLogout(){
                         <Button variant='contained' onClick={()=>{handleSubmit()}}>Login</Button>
                     </form>
                     :
-                    <div style={{'textAlign': 'center','marginTop': '5%', 'padding': '5%'}}>
+                    <div style={{'textAlign': 'center','marginTop': '5%', 'padding': '5%', 'justifyContent': 'center'}}>
                         <Card sx={{ 
-                            maxWidth: .90 * (window.innerWidth),
+                            maxWidth: .70 * (window.innerWidth),
                             display: 'flex',
                             justifyContent: 'center',
                             flexDirection: 'column' 

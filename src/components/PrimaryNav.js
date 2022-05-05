@@ -1,5 +1,4 @@
 import '../App.css'
-import { useState } from 'react'
 import BottomNavigation from '@mui/material/BottomNavigation';
 import Box from '@mui/material/Box';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -19,13 +18,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import PersonIcon from '@mui/icons-material/Person';
 
-import {Tabs, Tab, Container, Image} from 'react-bootstrap'
-
-
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { ClassNames } from '@emotion/react';
+import { Container } from 'react-bootstrap'
 
 
 const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
@@ -47,15 +40,35 @@ const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
                         {user? <BottomNavigationAction label="Your Account" icon={<AccountCircleIcon/>} href={'/user'}/> 
                         :<BottomNavigationAction label="Login" icon={<LoginIcon/>} href={'/user'}/>}
                     </BottomNavigation>
+                    <Typography variant="h6"
+                    noWrap
+                    component="div"
+                    sx={{
+                        textAlign: 'left',
+                        paddingLeft: '1em',
+                        bgcolor: '#011627',
+                        color: 'white',
+                        borderRadius: '3px'
+                    }}
+                    >Parkspot.com</Typography>
                 </Box>
           );
     }
     if(!thinScreen){
       
         return (
-          <AppBar position="static">
-            <Container maxWidth="xl">
-              <Toolbar disableGutters>
+          <AppBar position="static" sx={{
+            backgroundColor: '#011627',
+            
+        }}>
+            <Container maxWidth="xl"sx={{
+              margin: '0%',
+              padding: '0%'
+          }}>
+              <Toolbar disableGutters sx={{
+                  backgroundColor: '#011627',
+                  mx: '0%'
+              }}>
                 <Typography
                   variant="h6"
                   noWrap
