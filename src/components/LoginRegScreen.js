@@ -17,11 +17,12 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
         let passwordsInDB = userDB.map(user => user.password)
         if (usernamesInDB.includes(username) && passwordsInDB.includes(password)){
             let index = usernamesInDB.indexOf(username)
-            setUser(userDB[index])
-            Cookies.set('user', JSON.stringify(userDB[index]))
-            console.log('You are logged in')
-            setFailedLogin(false)
-            
+            if(userDB[index].password === password){
+                setUser(userDB[index])
+                Cookies.set('user', JSON.stringify(userDB[index]))
+                console.log('You are logged in')
+                setFailedLogin(false)
+            }
         }
         else{
             setFailedLogin(true)
