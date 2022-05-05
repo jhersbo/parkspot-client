@@ -3,9 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState, useEffect} from 'react'
 import Cookies from 'cookies-js'
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
+import { useMediaQuery } from '@mui/material'
 
 //components
 import PrimaryNav from './components/PrimaryNav';
+import PostingsFeed from './components/PostingsFeed';
+import AddPostingScreen from './components/AddPostingScreen';
+import LoginRegScreen from './components/LoginRegScreen';
 
 const localServerURL = "http://localhost:3000/"
 
@@ -18,7 +22,11 @@ function App() {
   let [user, setUser] = useState(cookieUser)
   let [userDB, setUserDB] = useState('')
   let [postingsDB, setPostingsDB] = useState('')
-  
+  let [thinScreen, setThinScreen] = useState(false)
+
+  const thinScreenBool = useMediaQuery('(max-width: 900px)')
+  console.log(thinScreen)
+
   useEffect(()=>{
     console.log('app.js mounted')
     let fetchUserDB = async ()=>{
@@ -35,12 +43,20 @@ function App() {
     }
     fetchUserDB()
     fetchPostingsDB()
-  },[user])
+    setThinScreen(thinScreenBool)
+  },[user, thinScreenBool])
   
   
   return (
     <div className="App">
-      <PrimaryNav user={user} setUser={setUser}></PrimaryNav>
+      <Router>
+        <PrimaryNav user={user} setUser={setUser} thinScreen={thinScreen}></PrimaryNav>
+        <Routes>
+          <Route path='/' element={<PostingsFeed postingsDB={postingsDB} thinScreen={thinScreen}/>}></Route>
+          <Route path='/list' element={<AddPostingScreen thinScreen={thinScreen}/>}></Route>
+          <Route path='/user' element={<LoginRegScreen user={user} userDB={userDB} setUser={setUser} setUserDB={setUserDB} thinScreen={thinScreen}/>}></Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
