@@ -12,7 +12,7 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
     let [failedLogin, setFailedLogin] = useState(false)
     let [username, setUsername] = useState(undefined)
     let [password, setPassword] = useState(undefined)
-    let [editing, setEditiing] = useState(false)
+    let [editing, setEditing] = useState(false)
     
     async function handleSubmit(){
         let usernamesInDB = userDB.map(user => user.username)
