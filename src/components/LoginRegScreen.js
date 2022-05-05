@@ -111,4 +111,78 @@ function handleLogout(){
             </div>
         )
     }
+    if(!thinScreen){
+        return(
+            <div>
+                {!user? 
+                    <form className='login-form' style={{'justifyContent': 'center', 'marginTop': '5%', 'display': 'flex', 'flexDirection': 'column','padding': '5%'}}>
+                        <TextField
+                        id='outlined-required'
+                        required
+                        label='Username'
+                        defaultValue={username}
+                        margin='none'
+                        onChange={(e)=>{setUsername(e.target.value)}}
+                        sx={{
+                            bgcolor: 'whitesmoke',
+                            borderRadius: '10px'
+                        }}
+                        ></TextField>
+                        <TextField
+                        id='outlined-required'
+                        required
+                        label='Password'
+                        margin='normal'
+                        onChange={(e)=>{setPassword(e.target.value)}}
+                        sx={{
+                            bgcolor: 'whitesmoke',
+                            borderRadius: '10px'
+                        }}
+                        ></TextField>
+                        <Button variant='contained' onClick={()=>{handleSubmit()}}>Login</Button>
+                    </form>
+                    :
+                    <div style={{'textAlign': 'center','marginTop': '5%', 'padding': '5%'}}>
+                        <Card sx={{ 
+                            maxWidth: .90 * (window.innerWidth),
+                            display: 'flex',
+                            justifyContent: 'center',
+                            flexDirection: 'column' 
+                            }}>
+                            <CardHeader
+                            avatar={
+                                <Avatar sx={{ bgcolor: red[300] }}>{user.firstname.charAt(0)}</Avatar>
+                            }
+                            title={user.firstname + ' ' + user.lastname}
+                            subheader={user.username}>
+                            </CardHeader>
+                            <CardContent sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                maxWidth: '100%',
+                                justifyContent: 'center'
+                            }}>
+                                <Button variant="contained" sx={{
+                                    mt:'1%',
+                                    mx: '2%' 
+                                }}>
+                                    Edit User Information
+                                </Button>
+                                <Button variant="contained" 
+                                sx={{
+                                    mt:'1%',
+                                    mx: '2%' 
+                                }}
+                                onClick={()=>{handleLogout()}}
+                                >
+                                    Logout
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </div>
+                }
+                
+            </div>
+        )
+    }
 }

@@ -7,10 +7,17 @@ import SearchIcon from '@mui/icons-material/Search';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import LoginIcon from '@mui/icons-material/Login';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { ThemeProvider } from '@mui/material';
-import { createTheme } from '@mui/material';
-import { withStyles } from '@mui/material';
-import { Link } from 'react-router-dom';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import PersonIcon from '@mui/icons-material/Person';
 
 import {Tabs, Tab, Container, Image} from 'react-bootstrap'
 
@@ -22,13 +29,9 @@ import { ClassNames } from '@emotion/react';
 
 
 const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
+    const pages = ['Find', 'List']
+    const routes = ['/', '/list']
 
-    const [value, setValue] = useState(0)
-    const [key, setKey] = useState('/');
-    
-    const handleRouteChange = (route)=>{
-        window.location.hash = route
-    }
 
     if(thinScreen){
         return (
@@ -48,25 +51,97 @@ const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
           );
     }
     if(!thinScreen){
-        return(
-            
-            <Container className='nav-container'>
-                
-                    {/* <img src='https://placekitten.com/200/300' alt='kitten' style={{'width': '100%', 'objectFit': 'fill', 'height': 'auto'}}></img> */}
-                <Tabs defaultActiveKey="Find" id="uncontrolled-tab-example" className="mb-3 nav-tab"
-                activeKey={key}
-                onSelect={(k) => setKey(k)}
+      
+        return (
+          <AppBar position="static">
+            <Container maxWidth="xl">
+              <Toolbar disableGutters>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
                 >
-                    <Tab eventKey="Find" title="Find" className='nav-tab'>
-                    </Tab>
-                    <Tab eventKey="List" title="List" className='nav-tab' style={{'textDecoration': 'none'}}>
-                    </Tab>
-                    {user? 
-                    <Tab eventKey="Login" title="Your Account" className='nav-tab'></Tab>
-                    :<Tab eventKey="Login" title="Login" className='nav-tab'></Tab>}
-                </Tabs>
+                  Parkspot.com
+                </Typography>
+      
+                <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    
+                    color="inherit"
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'left',
+                    }}
+                    
+                    
+                    sx={{
+                      display: { xs: 'block', md: 'none' },
+                    }}
+                  >
+                    {pages.map((page) => (
+                      <MenuItem key={page}>
+                        <Typography textAlign="center" >{page}</Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </Box>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
+                >
+                  LOGO
+                </Typography>
+                <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                  {pages.map((page, i) => (
+                    <Button
+                      key={page}
+                      
+                      sx={{ my: 2, color: 'white', display: 'block' }}
+                      href={routes[i]}
+                    >
+                      {page}
+                    </Button>
+                  ))}
+                </Box>
+                {!user?
+                    <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip title="Login">
+                         <IconButton  sx={{ p: 0, fontSize: 'large', color: 'whitesmoke' }} href='/user'>
+                            <PersonIcon/>
+                         </IconButton>
+                        </Tooltip>
+                    </Box>
+                :
+                    <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip title="Account">
+                        <IconButton  sx={{ p: 0,}} href='/user'>
+                            <Avatar alt={user? user.username: ''} src={user.profile_pic? user.profile_pic: ''}/>
+                        </IconButton>
+                        </Tooltip>
+                    </Box>
+                }
+              </Toolbar>
             </Container>
-        )
+          </AppBar>
+        );
     }
 }
 
