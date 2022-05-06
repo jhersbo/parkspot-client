@@ -8,6 +8,8 @@ import { Avatar, Button, Card, CardContent, CardHeader, Typography } from '@mui/
 import { red } from '@mui/material/colors';
 import { maxWidth } from '@mui/system';
 
+const localServerURL = "http://localhost:3000/"
+
 export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinScreen} ){
     
     let [failedLogin, setFailedLogin] = useState(false)
@@ -16,6 +18,7 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
     let [firstName, setFirstName] = useState(user? user.firstname: '')
     let [lastName, setLastName] = useState(user? user.lastname: '')
     let [editing, setEditing] = useState(false)
+    let [newUser, setNewUser] = useState(false)
 
     
     function handleSubmit(){
@@ -35,8 +38,49 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
         }
     }
 
+    function generateUserId(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); 
+    }
+      
+
     async function updateUserProfile(){
-        //update DB with user changes
+        const userObject = {
+            user_id: user.user_id,
+            username: username,
+            password: password,
+            firstname: firstName,
+            lastname: lastName
+        }
+        await fetch(localServerURL + 'users',{
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userObject)
+        })
+        window.location.href = '/user'
+    }
+
+    async function pushNewUser(){
+        const userObject = {
+            user_id: generateUserId(1, 10000),
+            username: username,
+            password: password,
+            firstname: firstName,
+            lastname: lastName
+        }
+        await fetch(localServerURL + 'users',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userObject)
+        })
+        Cookies.set('user', JSON.stringify(userObject))
+        setUser(userObject)
+        setNewUser(false)
     }
 
 function handleLogout(){
@@ -47,7 +91,7 @@ function handleLogout(){
     if(thinScreen){
         return(
             <div>
-                {!user? 
+                {!user || failedLogin? 
                     <form className='login-form' style={{'justifyContent': 'center', 'marginTop': '5%', 'display': 'flex', 'flexDirection': 'column','padding': '5%'}}>
                         <TextField
                         id='outlined-required'
@@ -72,7 +116,60 @@ function handleLogout(){
                             borderRadius: '10px'
                         }}
                         ></TextField>
-                        <Button variant='contained' onClick={()=>{handleSubmit()}}>Login</Button>
+                        {newUser?
+                            <TextField
+                            id='outlined-required'
+                            required
+                            label='First Name'
+                            margin='normal'
+                            onChange={(e)=>{setFirstName(e.target.value)}}
+                            sx={{
+                                bgcolor: 'whitesmoke',
+                                borderRadius: '10px'
+                            }}
+                            ></TextField>
+                        :
+                            <Button sx={{
+                                mt: '0.5em',
+                                maxWidth: '80%',
+                                ml: '10%'
+                            }}
+                            variant='contained' onClick={()=>{handleSubmit()}}>Login</Button>
+                            // {failedLogin?
+                            // <Typography>Login Failed</Typography>
+                            //need styling    
+                        }
+                        {newUser?
+                            <TextField
+                            id='outlined-required'
+                            required
+                            label='Last Name'
+                            margin='normal'
+                            onChange={(e)=>{setLastName(e.target.value)}}
+                            sx={{
+                                bgcolor: 'whitesmoke',
+                                borderRadius: '10px'
+                            }}
+                            ></TextField>
+                        :
+                            <Button variant='contained' onClick={()=>{setNewUser(true)}}
+                            sx={{
+                                mt: '0.5em',
+                                maxWidth: '80%',
+                                ml: '10%'
+                            }}
+                            >Create an Account</Button>
+                        }
+                        
+                        {!newUser?
+                            null
+                        :
+                            <Button variant='contained' onClick={()=>{pushNewUser()}}
+                            sx={{
+                                mt: '0.5em'
+                            }}
+                            >Create an Account</Button>    
+                        }
                     </form>
                     :
                     <div style={{'textAlign': 'center','marginTop': '5%', 'padding': '5%', 'justifyContent': 'center'}}>
@@ -164,7 +261,8 @@ function handleLogout(){
                                     }}
                                     onChange={(e)=>{setLastName(e.target.value)}}
                                     />
-                                    <Button variant='contained' onClick={()=>{}}>Submit Changes</Button>
+                                    <Button variant='contained' onClick={
+                                    async()=>{await updateUserProfile()}}>Submit Changes</Button>
                                 </CardContent>
                             }
                         </Card>

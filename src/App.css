@@ -13,8 +13,13 @@
 
 .App{
   background-color: #6C809A;
+  ;
 }
 
 .tab{
   color: white;
+}
+
+#root{
+  align-content: center;
 }
