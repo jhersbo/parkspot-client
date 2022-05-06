@@ -44,7 +44,7 @@ export default function PostingCard({ postingsDB, user, post  }){
             maxWidth: 355,
             display: 'flex',
             justifyContent: 'center',
-            boxShadow: '1px 1px 15px black' 
+            boxShadow: '1px 1px 15px black', 
             }}>
         <CardActionArea onClick={async ()=>{await reserveSpot()}}>
         {post.photo?

@@ -275,7 +275,10 @@ function handleLogout(){
     }
     if(!thinScreen){
         return(
-            <div>
+            <div style={{
+                'max-width': '50%',
+                'transform': 'translate(50%)'
+            }}>
                 {!user || failedLogin? 
                     <form className='login-form' style={{'justifyContent': 'center', 'marginTop': '5%', 'display': 'flex', 'flexDirection': 'column','padding': '5%'}}>
                         <TextField
