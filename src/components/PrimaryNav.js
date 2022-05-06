@@ -49,7 +49,9 @@ const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
                         paddingLeft: '1em',
                         bgcolor: '#011627',
                         color: 'white',
-                        borderRadius: '1px'
+                        borderRadius: '1px',
+                        backgroundColor: '#011627',
+                        boxShadow: '1px 0px 5px black'
                     }}
                     >Parkspot.com</Typography>
                 </Box>
