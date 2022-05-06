@@ -148,7 +148,11 @@ const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Account">
                         <IconButton  sx={{ p: 0,}} href='/user'>
-                            <Avatar alt={user? user.username: ''} src={user.profile_pic? user.profile_pic: ''}/>
+                            <Avatar alt={user? user.username: ''} src={user.profile_pic? user.profile_pic: ''}
+                            sx={{
+                              color: 'whiteSmoke',
+                              bgcolor: '#E57373'
+                            }}>{user.profile_pic? null : user.firstname.charAt(0)}</Avatar>
                         </IconButton>
                         </Tooltip>
                     </Box>

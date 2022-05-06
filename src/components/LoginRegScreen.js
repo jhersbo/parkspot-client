@@ -1,12 +1,9 @@
 import '../App.css'
 import Cookies from 'cookies-js'
 import { useState } from "react"
-
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Avatar, Button, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
-import { maxWidth } from '@mui/system';
 
 const localServerURL = "http://localhost:3000/"
 
@@ -35,6 +32,7 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
         }
         else{
             setFailedLogin(true)
+            window.alert('Login failed. Please try again.')
         }
     }
 
@@ -84,10 +82,10 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
         setNewUser(false)
     }
 
-function handleLogout(){
+    function handleLogout(){
     setUser(undefined)
     Cookies.set('user', undefined)
-}
+    }
 
     if(thinScreen){
         return(
