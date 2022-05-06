@@ -52,8 +52,8 @@ function App() {
       <Router>
         <PrimaryNav user={user} setUser={setUser} thinScreen={thinScreen}></PrimaryNav>
         <Routes>
-          <Route path='/' element={<PostingsFeed postingsDB={postingsDB} thinScreen={thinScreen}/>}></Route>
-          <Route path='/list' element={<AddPostingScreen thinScreen={thinScreen}/>}></Route>
+          <Route path='/' element={<PostingsFeed postingsDB={postingsDB} thinScreen={thinScreen} user={user}/>}></Route>
+          <Route path='/list' element={<AddPostingScreen thinScreen={thinScreen} user={user}/>}></Route>
           <Route path='/user' element={<LoginRegScreen user={user} userDB={userDB} setUser={setUser} setUserDB={setUserDB} thinScreen={thinScreen}/>}></Route>
         </Routes>
       </Router>
