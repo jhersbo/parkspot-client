@@ -103,18 +103,21 @@ function handleLogout(){
                         onChange={(e)=>{setUsername(e.target.value)}}
                         sx={{
                             bgcolor: 'whitesmoke',
-                            borderRadius: '10px'
+                            borderRadius: '10px',
+                            boxShadow: '1px 1px 5px black'
                         }}
                         ></TextField>
                         <TextField
-                        id='outlined-required'
+                        id='outlined-password-input'
+                        type='password'
                         required
                         label='Password'
                         margin='normal'
                         onChange={(e)=>{setPassword(e.target.value)}}
                         sx={{
                             bgcolor: 'whitesmoke',
-                            borderRadius: '10px'
+                            borderRadius: '10px',
+                            boxShadow: '1px 1px 5px black'
                         }}
                         ></TextField>
                         {newUser?
@@ -126,7 +129,8 @@ function handleLogout(){
                             onChange={(e)=>{setFirstName(e.target.value)}}
                             sx={{
                                 bgcolor: 'whitesmoke',
-                                borderRadius: '10px'
+                                borderRadius: '10px',
+                                boxShadow: '1px 1px 5px black'
                             }}
                             ></TextField>
                         :
@@ -136,9 +140,7 @@ function handleLogout(){
                                 ml: '10%'
                             }}
                             variant='contained' onClick={()=>{handleSubmit()}}>Login</Button>
-                            // {failedLogin?
-                            // <Typography>Login Failed</Typography>
-                            //need styling    
+                                
                         }
                         {newUser?
                             <TextField
@@ -149,7 +151,8 @@ function handleLogout(){
                             onChange={(e)=>{setLastName(e.target.value)}}
                             sx={{
                                 bgcolor: 'whitesmoke',
-                                borderRadius: '10px'
+                                borderRadius: '10px',
+                                boxShadow: '1px 1px 5px black'
                             }}
                             ></TextField>
                         :
@@ -290,18 +293,21 @@ function handleLogout(){
                         onChange={(e)=>{setUsername(e.target.value)}}
                         sx={{
                             bgcolor: 'whitesmoke',
-                            borderRadius: '10px'
+                            borderRadius: '10px',
+                            boxShadow: '1px 1px 5px black'
                         }}
                         ></TextField>
                         <TextField
-                        id='outlined-required'
+                        id='outlined-password-input'
+                        type='password'
                         required
                         label='Password'
                         margin='normal'
                         onChange={(e)=>{setPassword(e.target.value)}}
                         sx={{
                             bgcolor: 'whitesmoke',
-                            borderRadius: '10px'
+                            borderRadius: '10px',
+                            boxShadow: '1px 1px 5px black'
                         }}
                         ></TextField>
                         {newUser?
@@ -313,14 +319,16 @@ function handleLogout(){
                             onChange={(e)=>{setFirstName(e.target.value)}}
                             sx={{
                                 bgcolor: 'whitesmoke',
-                                borderRadius: '10px'
+                                borderRadius: '10px',
+                                boxShadow: '1px 1px 5px black'
                             }}
                             ></TextField>
                         :
                             <Button sx={{
                                 mt: '0.5em',
                                 maxWidth: '80%',
-                                ml: '10%'
+                                ml: '10%',
+                                boxShadow: '1px 1px 5px black'
                             }}
                             variant='contained' onClick={()=>{handleSubmit()}}>Login</Button>
                             // {failedLogin?
@@ -336,7 +344,8 @@ function handleLogout(){
                             onChange={(e)=>{setLastName(e.target.value)}}
                             sx={{
                                 bgcolor: 'whitesmoke',
-                                borderRadius: '10px'
+                                borderRadius: '10px',
+                                boxShadow: '1px 1px 5px black' 
                             }}
                             ></TextField>
                         :
@@ -344,7 +353,8 @@ function handleLogout(){
                             sx={{
                                 mt: '0.5em',
                                 maxWidth: '80%',
-                                ml: '10%'
+                                ml: '10%',
+                                boxShadow: '1px 1px 5px black'
                             }}
                             >Create an Account</Button>
                         }
@@ -354,7 +364,8 @@ function handleLogout(){
                         :
                             <Button variant='contained' onClick={()=>{pushNewUser()}}
                             sx={{
-                                mt: '0.5em'
+                                mt: '0.5em',
+                                boxShadow: '1px 1px 5px black'
                             }}
                             >Create an Account</Button>    
                         }
@@ -365,7 +376,8 @@ function handleLogout(){
                             maxWidth: .90 * (window.innerWidth),
                             display: 'flex',
                             justifyContent: 'center',
-                            flexDirection: 'column' 
+                            flexDirection: 'column',
+                            boxShadow: '1px 1px 10px black' 
                             }}>
                             <CardHeader
                             avatar={
@@ -383,14 +395,16 @@ function handleLogout(){
                                 }}>
                                     <Button variant="contained" sx={{
                                         mt:'1%',
-                                        mx: '2%' 
+                                        mx: '2%',
+                                        boxShadow: '1px 1px 5px black' 
                                     }} onClick={()=>{setEditing(true)}}>
                                         Edit User Information
                                     </Button>
                                     <Button variant="contained" 
                                     sx={{
                                         mt:'1%',
-                                        mx: '2%' 
+                                        mx: '2%',
+                                        boxShadow: '1px 1px 5px black' 
                                     }}
                                     onClick={()=>{handleLogout()}}
                                     >
@@ -411,7 +425,8 @@ function handleLogout(){
                                     sx={{
                                         bgcolor: 'whitesmoke',
                                         borderRadius: '10px',
-                                        mt: '1em'
+                                        mt: '1em',
+                                        boxShadow: '1px 1px 5px black'
                                     }}
                                     onChange={(e)=>{setUsername(e.target.value)}}
                                     />
@@ -422,7 +437,8 @@ function handleLogout(){
                                     sx={{
                                         bgcolor: 'whitesmoke',
                                         borderRadius: '10px',
-                                        mt: '1em'
+                                        mt: '1em',
+                                        boxShadow: '1px 1px 5px black'
                                     }}
                                     onChange={(e)=>{setPassword(e.target.value)}}
                                     />
@@ -433,7 +449,8 @@ function handleLogout(){
                                     sx={{
                                         bgcolor: 'whitesmoke',
                                         borderRadius: '10px',
-                                        mt: '1em'
+                                        mt: '1em',
+                                        boxShadow: '1px 1px 5px black'
                                     }}
                                     onChange={(e)=>{setFirstName(e.target.value)}}
                                     />
@@ -445,12 +462,15 @@ function handleLogout(){
                                         bgcolor: 'whitesmoke',
                                         borderRadius: '10px',
                                         mt: '1em',
-                                        mb: '1em'
+                                        mb: '1em',
+                                        boxShadow: '1px 1px 5px black'
                                     }}
                                     onChange={(e)=>{setLastName(e.target.value)}}
                                     />
                                     <Button variant='contained' onClick={
-                                    async()=>{await updateUserProfile()}}>Submit Changes</Button>
+                                    async()=>{await updateUserProfile()}}sx={{
+                                        boxShadow: '1px 1px 5px black'
+                                    }}>Submit Changes</Button>
                                 </CardContent>
                             }
                         </Card>

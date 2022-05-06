@@ -69,11 +69,21 @@ export default function PostingCard({ postingsDB, user, post  }){
             }}>
               {'poster: '+post.username}
             </Typography>
-            <Typography variant='body1' sx={{
-                mt: '1em'
-            }}>
-                *Click to Reserve*
-            </Typography>
+            {user? 
+                <Typography variant='body1' sx={{
+                    mt: '1em',
+                    color: '#D90429'
+                }}>
+                    *Click to Reserve*
+                </Typography>
+            :
+                <Typography variant='body1' sx={{
+                    mt: '1em',
+                    color: '#D90429'
+                }}>
+                    *Login to Reserve*
+                </Typography>
+            }
           </CardContent>
         </CardActionArea>
       </Card>

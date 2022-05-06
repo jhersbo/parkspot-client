@@ -29,7 +29,8 @@ const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
     if(thinScreen){
         return (
                 <Box sx={{ 
-                    width: 1, 
+                    width: 1,
+                    bgcolor: 'whitesmoke' 
                     }}>
                     <BottomNavigation
                         className='mobile'
@@ -48,7 +49,7 @@ const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
                         paddingLeft: '1em',
                         bgcolor: '#011627',
                         color: 'white',
-                        borderRadius: '3px'
+                        borderRadius: '1px'
                     }}
                     >Parkspot.com</Typography>
                 </Box>

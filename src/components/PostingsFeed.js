@@ -25,6 +25,7 @@ export default function PostingsFeed({ user, postingsDB, thinScreen }){
             sx={{
                 alignContent: 'space-evenly',
                 mt: '1em',
+                
             }}
         >
             {individualPostings}

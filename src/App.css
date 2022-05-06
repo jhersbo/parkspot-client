@@ -15,6 +15,7 @@
   background: rgb(96,93,159);
   background: linear-gradient(90deg, rgba(96,93,159,1) 0%, rgba(162,162,195,1) 35%, rgba(102,115,185,1) 100%);
   align-content: center;
+  margin-bottom: 100%;
 }
 
 .tab{

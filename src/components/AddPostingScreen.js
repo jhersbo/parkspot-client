@@ -8,7 +8,7 @@ import { maxWidth } from '@mui/system';
 
 const localServerURL = "http://localhost:3000/"
 
-export default function AddPostingScreen({ user }){
+export default function AddPostingScreen({ user, thinScreen }){
     let [photo, setPhoto] = useState('')
     let [rate, setRate] = useState()
     let [address, setAddress] = useState('')
@@ -40,13 +40,16 @@ export default function AddPostingScreen({ user }){
     }
 
     return(
-            <div style={{'textAlign': 'center','marginTop': '5%', 'padding': '5%', 'justifyContent': 'center'}}>
+            <div style={{'textAlign': 'center','marginTop': '5%', 'padding': '5%', 'justifyContent': 'center', 
+            'max-width': thinScreen? '90%' :'50%',
+            'transform': thinScreen? 'translate(5%)' : 'translate(50%)'}}>
                 {user?
                     <Card sx={{ 
                         maxWidth: .90 * (window.innerWidth),
                         display: 'flex',
                         justifyContent: 'center',
-                        flexDirection: 'column' 
+                        flexDirection: 'column',
+                        boxShadow: '1px 1px 10px black' 
                         }}>
                         {/* <CardHeader
                         avatar={
@@ -103,15 +106,21 @@ export default function AddPostingScreen({ user }){
                             </CardContent>
                     </Card>
                 :
-                    <Card sx={{ 
-                        maxWidth: .90 * (window.innerWidth),
-                        display: 'flex',
-                        justifyContent: 'center',
-                        flexDirection: 'column' 
+                    <div style={{
+                        'max-width': thinScreen? '90%' :'50%',
+                        'transform': thinScreen? 'translate(5%)' : 'translate(50%)'
+                    }}>
+                        <Card sx={{ 
+                            display: 'flex',
+                            justifyContent: 'center',
+                            flexDirection: 'column',
+                            boxShadow: '1px 1px 10px black',
+                            borderRadius: '6px' 
                         }}>
                             
-                            <Button variant="contained" href='/user'>Login to make a post</Button>
-                    </Card>
+                            <Button variant="contained" href='/user' >Login to your account</Button>
+                        </Card>
+                    </div>
                 }
             </div>
     )
