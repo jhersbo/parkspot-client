@@ -4,14 +4,32 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
+const localServerURL = "http://localhost:3000/"
+
 export default function PostingCard({ postingsDB, user, post  }){
+    
+    async function reserveSpot(){
+        let dataPKG = {
+            posting_id: post.posting_id,
+            available: false
+        }
+        await fetch(localServerURL + 'postings', {
+            method: 'PUT',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataPKG)
+        })
+        window.location.href = '/'
+    }
+    
     return(
         <Card sx={{ 
             maxWidth: 355,
             display: 'flex',
             justifyContent: 'center' 
             }}>
-        <CardActionArea>
+        <CardActionArea onClick={async ()=>{await reserveSpot()}}>
         {post.photo?
             <CardMedia
             component="img"

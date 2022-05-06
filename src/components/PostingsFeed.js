@@ -10,14 +10,16 @@ export default function PostingsFeed({ postingsDB, thinScreen }){
    }
    if(postingsDB){
     let individualPostings = postingsDB.map((post) =>{
-        return(
-            <PostingCard key={post.posting_id} post={post}></PostingCard>
-        )
+        if(post.available){
+            return(
+                <PostingCard key={post.posting_id} post={post}></PostingCard>
+            )
+        }
     })
 
     return (
         <Masonry
-            columns={thinScreen? 1: 3}
+            columns={thinScreen? 1: 4}
             spacing={1}
             height={100}
             sx={{
