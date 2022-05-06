@@ -2,7 +2,7 @@ import PostingCard from "./PostingCard"
 import { Card } from "react-bootstrap"
 import Masonry from '@mui/lab/Masonry';
 
-export default function PostingsFeed({ postingsDB, thinScreen }){
+export default function PostingsFeed({ user, postingsDB, thinScreen }){
    if(!postingsDB){
        return(
            null
@@ -12,7 +12,7 @@ export default function PostingsFeed({ postingsDB, thinScreen }){
     let individualPostings = postingsDB.map((post) =>{
         if(post.available){
             return(
-                <PostingCard key={post.posting_id} post={post}></PostingCard>
+                <PostingCard key={post.posting_id} post={post} user={user}></PostingCard>
             )
         }
     })
@@ -23,7 +23,8 @@ export default function PostingsFeed({ postingsDB, thinScreen }){
             spacing={1}
             height={100}
             sx={{
-                alignSelf: 'center'
+                alignContent: 'space-evenly',
+                mt: '1em',
             }}
         >
             {individualPostings}

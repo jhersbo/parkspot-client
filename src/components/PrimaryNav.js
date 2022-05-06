@@ -59,6 +59,7 @@ const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
         return (
           <AppBar position="static" sx={{
             backgroundColor: '#011627',
+            boxShadow: '1px 1px 10px black'
             
         }}>
             <Container maxWidth="xl"sx={{

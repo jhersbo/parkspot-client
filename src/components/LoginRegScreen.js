@@ -51,7 +51,8 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
             username: username,
             password: password,
             firstname: firstName,
-            lastname: lastName
+            lastname: lastName,
+            spots: []
         }
         await fetch(localServerURL + 'users',{
             method: 'PUT',
@@ -65,7 +66,7 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
 
     async function pushNewUser(){
         const userObject = {
-            user_id: generateUserId(1, 1000000000000000),
+            user_id: generateUserId(1, 10000000),
             username: username,
             password: password,
             firstname: firstName,
