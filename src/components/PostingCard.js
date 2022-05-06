@@ -13,14 +13,18 @@ export default function PostingCard({ postingsDB, user, post  }){
             posting_id: post.posting_id,
             available: false
         }
-        await fetch(localServerURL + 'postings', {
-            method: 'PUT',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataPKG)
-        })
-        window.location.href = '/'
+        if(user){
+            await fetch(localServerURL + 'postings', {
+                method: 'PUT',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataPKG)
+            })
+            window.location.href = '/'
+        }else{
+            window.alert('Please login to reserve spots')
+        }
     }
     
     return(
