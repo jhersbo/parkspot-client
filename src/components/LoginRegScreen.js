@@ -65,7 +65,7 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
 
     async function pushNewUser(){
         const userObject = {
-            user_id: generateUserId(1, 10000),
+            user_id: generateUserId(1, 1000000000000000),
             username: username,
             password: password,
             firstname: firstName,
