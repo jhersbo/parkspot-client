@@ -18,7 +18,7 @@ export default function PostingCard({ postingsDB, user, post  }){
             posting_id: post.posting_id,
             available: false
         }
-        if(user){
+        if(user && user.username !== post.username){
             await fetch(localServerURL + 'postings', {
                 method: 'PUT',
                 headers:{
@@ -35,7 +35,7 @@ export default function PostingCard({ postingsDB, user, post  }){
             // })
             window.location.href = '/'
         }else{
-            window.alert('Please login to reserve spots')
+            window.alert('Error. Cannot reserve your own spot, dummy!')
         }
     }
     
@@ -44,7 +44,9 @@ export default function PostingCard({ postingsDB, user, post  }){
             maxWidth: 355,
             display: 'flex',
             justifyContent: 'center',
-            boxShadow: '1px 1px 15px black', 
+            boxShadow: '1px 1px 15px black',
+            bgcolor: '#F7F7F2',
+            borderRadius: '10px' 
             }}>
         <CardActionArea onClick={async ()=>{await reserveSpot()}}>
         {post.photo?

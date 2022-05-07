@@ -30,7 +30,8 @@ const PrimaryNav = ( {user, SetUser, thinScreen} )=>{
         return (
                 <Box sx={{ 
                     width: 1,
-                    bgcolor: 'whitesmoke' 
+                    bgcolor: '#F7F7F2',
+                    transform: 'translateZ()'
                     }}>
                     <BottomNavigation
                         className='mobile'
