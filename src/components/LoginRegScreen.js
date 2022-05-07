@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import { Avatar, Button, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 
-const localServerURL = "http://localhost:3000/"
+const localServerURL = "https://parkspot-server.herokuapp.com/"
 
 export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinScreen} ){
     

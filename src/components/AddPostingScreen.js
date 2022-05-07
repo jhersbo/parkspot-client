@@ -6,7 +6,7 @@ import { red } from '@mui/material/colors';
 import { maxWidth } from '@mui/system';
 
 
-const localServerURL = "http://localhost:3000/"
+const localServerURL = "https://parkspot-server.herokuapp.com/"
 
 export default function AddPostingScreen({ user, thinScreen }){
     let [photo, setPhoto] = useState('')

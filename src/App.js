@@ -11,7 +11,7 @@ import PostingsFeed from './components/PostingsFeed';
 import AddPostingScreen from './components/AddPostingScreen';
 import LoginRegScreen from './components/LoginRegScreen';
 
-const localServerURL = "http://localhost:3000/"
+const localServerURL = "https://parkspot-server.herokuapp.com/"
 
 function App() {
   //cookies for login
