@@ -69,7 +69,7 @@ export default function PostingCard({ postingsDB, user, post  }){
             <Typography variant="body2" color="text.secondary" sx={{
                 mt: '1em'
             }}>
-              {'poster: '+post.username}
+              {'poster: '+ post.username}
             </Typography>
             {user? 
                 <Typography variant='body1' sx={{
