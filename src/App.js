@@ -37,7 +37,7 @@ function App() {
     }
     let fetchPostingsDB = async ()=>{
       let response = await fetch(localServerURL + "postings")
-      let rData = await response.json()
+      let rData = await response.json() 
       console.log(rData)
       setPostingsDB(rData)
     }
