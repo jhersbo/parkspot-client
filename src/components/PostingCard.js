@@ -4,7 +4,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-const localServerURL = "https://parkspot-server.herokuapp.com/"
+const localServerURL = "http://localhost:3000/"
 
 export default function PostingCard({ postingsDB, user, post  }){
     
