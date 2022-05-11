@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import { Avatar, Button, Card, CardContent, CardHeader, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 
-const localServerURL = "http://localhost:3000/"
+const serverURL = "https://parkspot-server.herokuapp.com/"
 
 export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinScreen} ){
     
@@ -52,7 +52,7 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
             lastname: lastName,
             spots: []
         }
-        await fetch(localServerURL + 'users',{
+        await fetch(serverURL + 'users',{
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ export default function LoginRegScreen( {user, setUser, userDB, setUserDB, thinS
             firstname: firstName,
             lastname: lastName
         }
-        await fetch(localServerURL + 'users',{
+        await fetch(serverURL + 'users',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

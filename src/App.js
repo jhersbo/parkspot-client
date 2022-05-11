@@ -11,7 +11,7 @@ import PostingsFeed from './components/PostingsFeed';
 import AddPostingScreen from './components/AddPostingScreen';
 import LoginRegScreen from './components/LoginRegScreen';
 
-const localServerURL = "http://localhost:3000/" 
+const serverURL = "https://parkspot-server.herokuapp.com/" 
 
 function App() {
   //cookies for login
@@ -30,13 +30,13 @@ function App() {
   useEffect(()=>{
     console.log('app.js mounted')
     let fetchUserDB = async ()=>{
-      let response = await fetch(localServerURL + "users")
+      let response = await fetch(serverURL + "users")
       let rData = await response.json()
       console.log(rData)
       setUserDB(rData)
     }
     let fetchPostingsDB = async ()=>{
-      let response = await fetch(localServerURL + "postings")
+      let response = await fetch(serverURL + "postings")
       let rData = await response.json() 
       console.log(rData)
       setPostingsDB(rData)

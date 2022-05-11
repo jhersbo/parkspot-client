@@ -4,7 +4,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-const localServerURL = "http://localhost:3000/"
+const serverURL = "https://parkspot-server.herokuapp.com/"
 
 export default function PostingCard({ postingsDB, user, post  }){
     
@@ -19,7 +19,7 @@ export default function PostingCard({ postingsDB, user, post  }){
             available: false
         }
         if(user && user.username !== post.username){
-            await fetch(localServerURL + 'postings', {
+            await fetch(serverURL + 'postings', {
                 method: 'PUT',
                 headers:{
                     'Content-Type': 'application/json'
